@@ -21,7 +21,7 @@ public class driver {
 	private View frame;
 	private ArrayList<Album> results;
 	//private ArrayList<String> colname;
-	private String ip = "83.250.249.187", user = "clientuser", pwd = "12345";
+	private String ip = "83.250.249.187", user = "clientuser", pwd = "12345", database = "labb1a";
 
 	/**
 	 * start is the equivalent of the constructor
@@ -41,7 +41,7 @@ public class driver {
 			}
 		});
 		//*
-		String server = "jdbc:mysql://" + ip + ":3306/" + "labb1"
+		String server = "jdbc:mysql://" + ip + ":3306/" + database
 				+ "?UseClientEnc=UTF8";
 
 		Connection con = null;
