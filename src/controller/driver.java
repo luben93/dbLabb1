@@ -40,6 +40,36 @@ public class driver {
 				}
 			}
 		});
+		//*
+		String server = "jdbc:mysql://" + ip + ":3306/" + "labb1"
+				+ "?UseClientEnc=UTF8";
+
+		Connection con = null;
+		try {
+			Class.forName("com.mysql.jdbc.Driver").newInstance();
+			con = DriverManager.getConnection(server, user, pwd);
+			// System.out.println("Connected!");
+			
+			
+			// usally do shit
+			
+			
+		} catch (Exception e) {
+			javax.swing.JOptionPane.showMessageDialog(null, "Database error, "
+					+ e.toString());
+			// e.printStackTrace();
+		} finally {
+			try {
+				if (con != null) {
+					con.close();
+					// System.out.println("Connection closed.");
+				}
+			} catch (SQLException e) {
+				javax.swing.JOptionPane.showMessageDialog(null,
+						"Database error, " + e.toString());
+			}
+		}
+		//*/
 	}
 
 	/**

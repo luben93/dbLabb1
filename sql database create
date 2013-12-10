@@ -25,3 +25,21 @@ CREATE TABLE `labb1a`.`album` (
     ON DELETE NO ACTION
     ON UPDATE CASCADE);
   
+  
+  
+  USE `labb1a`;
+DROP procedure IF EXISTS `checkArtist`;
+
+DELIMITER $$
+USE `labb1a`$$
+CREATE PROCEDURE checkArtist (newArtist varchar(45))
+modifies sql data
+BEGIN
+	if not exists (select * from artist=newArtist) then
+		insert into artist (Artist) values (newArtist);
+	end if;
+END$$
+
+DELIMITER ;
+
+  
