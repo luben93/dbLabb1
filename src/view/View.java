@@ -44,6 +44,9 @@ public class View extends JFrame {
 	/**
 	 * Create the frame.
 	 */
+	
+	
+	
 	public View(final controller.driver dri) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -53,6 +56,18 @@ public class View extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
+		this.addWindowListener(new java.awt.event.WindowAdapter() {
+		    @Override
+		    public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+		       //dont forget to 
+		    	//System.out.println("goodbye");
+		        dri.terminateCon();    
+		    	System.exit(0);
+		        
+		    }
+		});
+		
+		
 		final JButton add = new JButton("Add record");
 		add.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -293,9 +308,10 @@ public class View extends JFrame {
 		btnSubmit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
 
-				
+				String[] temp =new String[1];
+				temp[0]=artist.getText();
 				try {
-					dri.update(artist.getText(), song.getText(),
+					dri.update(temp, song.getText(),
 							BoxOptions[BoxOptionSelected]);
 				} catch (NullValueExecption e) {
 					javax.swing.JOptionPane.showMessageDialog(null, " input value error, "

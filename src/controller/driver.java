@@ -9,6 +9,9 @@ import java.util.ArrayList;
 import model.Album;
 import view.View;
 
+
+
+
 /**
  * the actuall controller, handels all comunication between the view and the
  * modell
@@ -20,6 +23,7 @@ public class driver {
 	// private ArrayList<String> test;
 	private View frame;
 	private ArrayList<Album> results;
+	private Connection con = null;
 	//private ArrayList<String> colname;
 	private String ip = "83.250.249.187", user = "clientuser", pwd = "12345", database = "labb1a";
 
@@ -44,7 +48,7 @@ public class driver {
 		String server = "jdbc:mysql://" + ip + ":3306/" + database
 				+ "?UseClientEnc=UTF8";
 
-		Connection con = null;
+		//Connection con = null;
 		try {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 			con = DriverManager.getConnection(server, user, pwd);
@@ -58,7 +62,7 @@ public class driver {
 			javax.swing.JOptionPane.showMessageDialog(null, "Database error, "
 					+ e.toString());
 			// e.printStackTrace();
-		} finally {
+		} /*finally {
 			try {
 				if (con != null) {
 					con.close();
@@ -71,6 +75,18 @@ public class driver {
 		}
 		//*/
 	}
+		public void terminateCon(){
+		try {
+			if (con != null) {
+				con.close();
+				// System.out.println("Connection closed.");
+			}
+		} catch (SQLException e) {
+			javax.swing.JOptionPane.showMessageDialog(null,
+					"Database error, " + e.toString());
+		}
+		
+	}
 
 	/**
 	 * update contains a insert SQL statment
@@ -81,7 +97,7 @@ public class driver {
 	 * @throws NullValueExecption
 	 *             if artist or album is NULL
 	 */
-	public void update(String artist, String album, String genre)
+	/*public void update(String artist, String album, String genre)
 			throws NullValueExecption {
 		if (!artist.equals("") && !album.equals("")) {
 			connect("insert into music (artist,album,genre) values ('"
@@ -91,6 +107,18 @@ public class driver {
 			//System.out.println("hej");
 			throw new NullValueExecption("Null is not an acceteble value here");
 		}
+	}*/
+	public void update(String[] artist, String album, String genre) throws NullValueExecption {
+			if (!artist.equals("") && !album.equals("")) {
+				//write several inserts 
+		
+		
+		
+		
+			} else {
+				//System.out.println("hej");
+				throw new NullValueExecption("Null is not an acceteble value here");
+			}
 	}
 
 	/**
